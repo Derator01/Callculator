@@ -15,20 +15,8 @@ public static partial class Calculator
         manager.AddNamespace("user", "http://user-functions");
 
         return (double)navigator.Evaluate(string.Format("number({0})", new Regex(@"([\+\-\*])").Replace(
-            expression, " ${1} ").Replace("/", " div ").Replace("%", " mod ").Replace("GetFactorial", "user:GetFactorial")), manager);
+            expression, " ${1} ").Replace("/", " div ").Replace("%", " mod ")), manager);
 
-    }
-
-    private static double GetFactorial(int number)
-    {
-        double result = 1;
-
-        for (int i = 1; i <= number; i++)
-        {
-            result *= i;
-        }
-
-        return result;
     }
 
     [GeneratedRegex("(\\d+)\\s*\\!")]
